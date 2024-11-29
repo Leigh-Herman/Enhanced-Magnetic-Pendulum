@@ -520,6 +520,195 @@ The addition of magnetic field lines provides a richer understanding of the inte
     \item The dynamic overlay of the pendulum motion on the field lines visually demonstrates the impact of the field on the pendulum's trajectory.
 \end{itemize}
 
+\section{Eigenvalue Analysis}
+
+The eigenvalue analysis provides insights into the stability of the spring pendulum system around its equilibrium points. By linearizing the equations of motion and analyzing the eigenvalues of the Jacobian matrix, we can determine the stability properties of the system.
+
+\subsection{Linearization of Equations of Motion}
+The nonlinear equations of motion for the spring pendulum system are:
+\[
+\ddot{r} = r \dot{\theta}^2 - \frac{k}{m}(r - l_0) + g \cos\theta,
+\]
+\[
+\ddot{\theta} = -\frac{2 \dot{r} \dot{\theta}}{r} - \frac{g}{r} \sin\theta.
+\]
+To analyze stability, these equations are linearized around the equilibrium point:
+\[
+r = l_0, \quad \theta = 0, \quad \dot{r} = 0, \quad \dot{\theta} = 0.
+\]
+
+\subsection{Jacobian Matrix}
+The Jacobian matrix is derived from the equations of motion and is given by:
+\[
+J = 
+\begin{bmatrix}
+\frac{\partial \dot{r}}{\partial r} & \frac{\partial \dot{r}}{\partial \theta} & \frac{\partial \dot{r}}{\partial \dot{r}} & \frac{\partial \dot{r}}{\partial \dot{\theta}} \\
+\frac{\partial \dot{\theta}}{\partial r} & \frac{\partial \dot{\theta}}{\partial \theta} & \frac{\partial \dot{\theta}}{\partial \dot{r}} & \frac{\partial \dot{\theta}}{\partial \dot{\theta}} \\
+\frac{\partial \ddot{r}}{\partial r} & \frac{\partial \ddot{r}}{\partial \theta} & \frac{\partial \ddot{r}}{\partial \dot{r}} & \frac{\partial \ddot{r}}{\partial \dot{\theta}} \\
+\frac{\partial \ddot{\theta}}{\partial r} & \frac{\partial \ddot{\theta}}{\partial \theta} & \frac{\partial \ddot{\theta}}{\partial \dot{r}} & \frac{\partial \ddot{\theta}}{\partial \dot{\theta}}
+\end{bmatrix}.
+\]
+
+Substituting the equilibrium conditions (\( r = l_0, \theta = 0, \dot{r} = 0, \dot{\theta} = 0 \)), the Jacobian matrix at the equilibrium point is computed as:
+\[
+J =
+\begin{bmatrix}
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+-\frac{k}{m} & g & 0 & 0 \\
+-\frac{g}{l_0^2} & 0 & 0 & 0
+\end{bmatrix}.
+\]
+
+\subsection{Characteristic Polynomial}
+The characteristic polynomial of the Jacobian matrix is derived as:
+\[
+P(\lambda) = \det(J - \lambda I),
+\]
+where \( I \) is the identity matrix. For the given system, the characteristic polynomial is:
+\[
+P(\lambda) = \lambda^4 + a \lambda^3 + b \lambda^2 + c \lambda + d.
+\]
+
+\subsection{Eigenvalues and Stability Analysis}
+The eigenvalues of the Jacobian matrix are computed numerically and analyzed for their real and imaginary components:
+\[
+\text{Eigenvalues} = \{ \lambda_1, \lambda_2, \lambda_3, \lambda_4 \}.
+\]
+Stability is determined as follows:
+\begin{itemize}
+    \item \textbf{Stable:} All eigenvalues have negative real parts.
+    \item \textbf{Unstable:} At least one eigenvalue has a positive real part.
+    \item \textbf{Marginally Stable:} Eigenvalues are purely imaginary.
+\end{itemize}
+
+\subsection{Visualization of Eigenvalues}
+Figure~\ref{fig:eigenvalues_complex_plane} shows the eigenvalues of the Jacobian matrix plotted in the complex plane. The x-axis represents the real part, and the y-axis represents the imaginary part of the eigenvalues. The position of the eigenvalues provides insights into the system's stability.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{eigenvalues_complex_plane.png}
+    \caption{Eigenvalues in the complex plane. The real part determines stability, while the imaginary part indicates oscillatory behavior.}
+    \label{fig:eigenvalues_complex_plane}
+\end{figure}
+
+\subsection{Discussion of Results}
+The eigenvalue analysis reveals the following:
+\begin{itemize}
+    \item The system is \textbf{stable} if all eigenvalues have negative real parts.
+    \item For the given parameter set, the eigenvalues indicate \textbf{oscillatory stability}, as they have both real and imaginary parts.
+    \item Modifying the parameters (e.g., spring constant \( k \), mass \( m \), or gravitational acceleration \( g \)) can shift the eigenvalues, leading to different stability regimes.
+\end{itemize}
+
+\section{Power Spectrum Analysis}
+
+The power spectrum analysis reveals the frequency components of the system's motion. By analyzing the spectra of the radial displacement (\( r(t) \)) and angular displacement (\( \theta(t) \)), we identify dominant frequencies and detect chaotic behavior.
+
+\subsection{Computation of the Power Spectrum}
+The power spectrum is computed as:
+\[
+P(f) = |\mathcal{F}(f)|^2,
+\]
+where \( \mathcal{F}(f) \) is the Fourier Transform of the time-series data:
+\[
+\mathcal{F}(f) = \int_{-\infty}^{\infty} x(t) e^{-2\pi i f t} dt,
+\]
+with \( x(t) \) representing \( r(t) \) or \( \theta(t) \). The frequency domain data is obtained using the Fast Fourier Transform (FFT). Only the positive frequencies are considered, as the spectrum is symmetric for real-valued signals.
+
+\subsection{Radial Displacement Power Spectrum}
+The power spectrum of the radial displacement \( r(t) \), shown in Figure~\ref{fig:power_spectrum_radial}, highlights the dominant oscillatory modes. Sharp peaks correspond to periodic behavior, while broad spectral content indicates chaotic motion.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{power_spectrum_radial.png}
+    \caption{Power spectrum of the radial displacement \( r(t) \). The spectrum reveals dominant frequencies associated with periodic and nonlinear oscillations.}
+    \label{fig:power_spectrum_radial}
+\end{figure}
+
+\subsection{Angular Displacement Power Spectrum}
+The power spectrum of the angular displacement \( \theta(t) \), shown in Figure~\ref{fig:power_spectrum_angular}, provides insights into the oscillatory behavior in the angular direction. Like the radial spectrum, sharp peaks indicate periodic motion, while a broadened spectrum suggests nonlinear or chaotic behavior.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{power_spectrum_angular.png}
+    \caption{Power spectrum of the angular displacement \( \theta(t) \). The spectrum shows frequencies associated with the pendulum's oscillatory dynamics.}
+    \label{fig:power_spectrum_angular}
+\end{figure}
+
+\subsection{Discussion}
+The power spectrum analysis provides the following insights:
+\begin{itemize}
+    \item \textbf{Periodic Motion:} Sharp peaks in the spectrum correspond to dominant oscillatory frequencies, indicating periodic behavior.
+    \item \textbf{Chaotic Motion:} Broad spectral content with multiple peaks suggests chaotic dynamics in the system.
+    \item \textbf{Magnetic Field Influence:} The oscillating magnetic field introduces additional frequencies, reflecting its modulation of the system's dynamics.
+\end{itemize}
+The analysis confirms that the system's behavior is sensitive to the magnetic forcing and exhibits transitions between periodic and chaotic regimes.
+
+\section{Lyapunov Stability Analysis}
+
+The Lyapunov stability analysis provides a method to assess the stability of the system's equilibrium points. By defining a Lyapunov function \( V \) and analyzing its time derivative \( \dot{V} \), we can determine the stability properties of the system.
+
+\subsection{Lyapunov Function}
+The Lyapunov function is chosen as the total mechanical energy of the system:
+\[
+V(r, \theta, \dot{r}, \dot{\theta}) = \frac{1}{2} m \dot{r}^2 + \frac{1}{2} m r^2 \dot{\theta}^2 + \frac{1}{2} k (r - l_0)^2 - m g r \cos\theta,
+\]
+where:
+\begin{itemize}
+    \item \( m \): Mass of the pendulum.
+    \item \( k \): Spring constant.
+    \item \( l_0 \): Natural length of the spring.
+    \item \( g \): Gravitational acceleration.
+    \item \( r \): Radial displacement.
+    \item \( \theta \): Angular displacement.
+\end{itemize}
+This function represents the total energy (kinetic and potential) of the system.
+
+\subsection{Time Derivative of the Lyapunov Function}
+The time derivative of the Lyapunov function \( \dot{V} \) is computed as:
+\[
+\dot{V} = \frac{\partial V}{\partial r} \dot{r} + \frac{\partial V}{\partial \theta} \dot{\theta} + \frac{\partial V}{\partial \dot{r}} \ddot{r} + \frac{\partial V}{\partial \dot{\theta}} \ddot{\theta},
+\]
+where \( \ddot{r} \) and \( \ddot{\theta} \) are derived from the equations of motion:
+\[
+\ddot{r} = r \dot{\theta}^2 - \frac{k}{m} (r - l_0) + g \cos\theta,
+\]
+\[
+\ddot{\theta} = -\frac{2 \dot{r} \dot{\theta}}{r} - \frac{g}{r} \sin\theta.
+\]
+
+\subsection{Results of the Analysis}
+The Lyapunov function \( V(r, \theta) \) and its time derivative \( \dot{V}(r, \theta) \) were evaluated over a grid of \( r \) and \( \theta \) values. Fixed values of \( \dot{r} = 0.1 \) and \( \dot{\theta} = 0.1 \) were used for the evaluation of \( \dot{V} \).
+
+\subsubsection{Lyapunov Function}
+The Lyapunov function \( V(r, \theta) \), shown in Figure~\ref{fig:lyapunov_function}, represents the energy landscape of the system. The minima of \( V(r, \theta) \) correspond to stable equilibrium points.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{lyapunov_function.png}
+    \caption{Contour plot of the Lyapunov function \( V(r, \theta) \), representing the energy landscape of the system. The minima correspond to stable regions.}
+    \label{fig:lyapunov_function}
+\end{figure}
+
+\subsubsection{Time Derivative of the Lyapunov Function}
+The time derivative \( \dot{V}(r, \theta) \), shown in Figure~\ref{fig:lyapunov_derivative}, highlights regions of stability and instability. Regions where \( \dot{V} \leq 0 \) are stable, while regions where \( \dot{V} > 0 \) indicate energy growth and instability.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{lyapunov_derivative.png}
+    \caption{Contour plot of the time derivative of the Lyapunov function \( \dot{V}(r, \theta) \). Stable regions (\( \dot{V} \leq 0 \)) are shown in cool colors, while unstable regions (\( \dot{V} > 0 \)) are in warm colors.}
+    \label{fig:lyapunov_derivative}
+\end{figure}
+
+\subsection{Discussion}
+The Lyapunov stability analysis provides the following insights:
+\begin{itemize}
+    \item The energy minima in the Lyapunov function \( V(r, \theta) \) correspond to stable equilibrium points of the system.
+    \item Regions where \( \dot{V} > 0 \) indicate that the system's energy increases, leading to instability.
+    \item The presence of stable and unstable regions demonstrates the nonlinear dynamics of the system, influenced by the coupling between radial and angular motion.
+\end{itemize}
+This analysis highlights the utility of the Lyapunov method in understanding stability in nonlinear systems.
+
 
 \newpage
 
