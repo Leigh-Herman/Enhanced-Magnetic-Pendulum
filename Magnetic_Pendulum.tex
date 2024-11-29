@@ -13,7 +13,7 @@
 \begin{document}
 \maketitle
 \tableofcontents
-
+\newpage
 \section{System Description}
 We consider a spring pendulum system where:
 \begin{itemize}
@@ -418,6 +418,108 @@ The animation is saved as a GIF file, named \texttt{spring\_pendulum\_magnetic.g
 The enhanced magnetic interaction introduces complex nonlinear effects into the system, resulting in more intricate dynamics. Visualizations, including phase portraits and Poincaré maps, reveal the interplay between periodic forcing and nonlinear coupling. The numerical simulation demonstrates the system's sensitivity to parameter changes, offering insights into chaotic and quasi-periodic behavior.
 
 The refined magnetic model adds depth to the analysis of the spring pendulum system, capturing nonlinear effects and enhancing the realism of the simulation. Future work can explore the system's behavior under varying damping and additional external forces.
+
+\section{Analysis and Reporting}
+
+\subsection{Analysis of Results}
+The numerical simulations reveal the complex interplay between the spring pendulum's motion and the external magnetic forcing. Key observations include:
+\begin{itemize}
+    \item \textbf{Periodic and Quasi-Periodic Motion:} For small forcing amplitudes (\( B_0 \)) and off-resonance driving frequencies (\( \omega \)), the system exhibits periodic or quasi-periodic behavior, as seen in the phase portraits.
+    \item \textbf{Chaotic Behavior:} Increasing \( B_0 \) or tuning \( \omega \) closer to resonance leads to chaotic dynamics. This is evident in the irregular trajectories in the Poincaré map and the phase portraits.
+    \item \textbf{Nonlinear Coupling Effects:} The enhanced magnetic interaction, incorporating saturation and spatial dependence, introduces stronger nonlinear coupling between radial and angular motions.
+\end{itemize}
+
+\subsection{Comparison of Models}
+The enhanced magnetic interaction model highlights the following:
+\begin{itemize}
+    \item \textbf{Saturation Effects:} The saturation of the magnetic moment (\( \mu \)) results in bounded forcing terms, preventing runaway trajectories.
+    \item \textbf{Spatial Variations:} Incorporating spatial gradients of the magnetic field adds complexity to the dynamics, producing more intricate phase portraits and Poincaré maps.
+\end{itemize}
+
+\subsection{Key Findings}
+\begin{enumerate}
+    \item The coupling between radial and angular motions is significantly influenced by the strength and frequency of the magnetic field.
+    \item Nonlinear magnetic interactions introduce chaotic behavior under certain parameter settings, as seen in the Poincaré maps.
+    \item The enhanced magnetic model provides a more realistic representation of ferromagnetic interactions in a dynamic system.
+\end{enumerate}
+
+\subsection{Future Work}
+This project can be extended in several directions:
+\begin{itemize}
+    \item \textbf{Damping Effects:} Introduce damping terms to study energy dissipation and its impact on chaos.
+    \item \textbf{Higher-Dimensional Systems:} Explore multi-pendulum systems or systems with additional degrees of freedom.
+    \item \textbf{Experimental Validation:} Design an experiment to replicate the simulated dynamics and validate the theoretical model.
+    \item \textbf{Lyapunov Analysis:} Compute Lyapunov exponents to quantify chaos in the system.
+\end{itemize}
+
+\section{Magnetic Field Lines and Dynamics}
+
+This section explores the visualization of magnetic field lines and their interaction with the spring pendulum dynamics. The magnetic field model includes a dipole approximation to simulate spatial variations and coupling effects. The pendulum's motion is overlaid on the field lines to highlight the dynamic interaction.
+
+\subsection{Magnetic Field Model}
+The magnetic field is modeled as a dipole field in 2D, calculated using:
+\[
+\mathbf{B}(\mathbf{r}) = \frac{\mu_0}{4\pi} \frac{3(\mathbf{m} \cdot \hat{r}) \hat{r} - \mathbf{m}}{r^3},
+\]
+where:
+\begin{itemize}
+    \item \( \mathbf{m} \): Magnetic dipole moment.
+    \item \( \hat{r} \): Unit vector in the radial direction.
+    \item \( r \): Radial distance from the origin.
+\end{itemize}
+The dynamic interaction with the pendulum is modeled using the saturation-based magnetic moment:
+\[
+\mu(B) = \frac{\mu_{\text{max}} B}{B + B_s},
+\]
+where \( B_s \) represents the saturation field strength.
+
+\subsection{Visualization of Field Lines}
+Figure~\ref{fig:magnetic_field_lines_dynamics} shows the magnetic field lines generated using the dipole field model. The field lines are visualized alongside the dynamic motion of the spring pendulum, depicted as a red oscillating mass and spring.
+
+\subsection{Phase Portraits and Poincaré Map with Field Lines}
+The magnetic field influences the pendulum's dynamics, as reflected in the phase portraits and Poincaré map.
+
+\subsubsection{Radial Phase Portrait}
+Figure~\ref{fig:radial_phase_portrait_fieldLines} shows the radial phase portrait (\( r \) vs. \( \dot{r} \)) under the influence of the magnetic field. The nonlinear coupling introduced by the field alters the trajectories.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{radial_phase_portrait_fieldLines.png}
+    \caption{Radial phase portrait showing the relationship between spring length \( r \) and radial velocity \( \dot{r} \) under magnetic field interaction.}
+    \label{fig:radial_phase_portrait_fieldLines}
+\end{figure}
+
+\subsubsection{Angular Phase Portrait}
+Figure~\ref{fig:angular_phase_portrait_fieldLines} shows the angular phase portrait (\( \theta \) vs. \( \dot{\theta} \)), illustrating the periodic and quasi-periodic motion resulting from the magnetic field's influence.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{angular_phase_portrait_fieldLines.png}
+    \caption{Angular phase portrait showing the relationship between angular displacement \( \theta \) and angular velocity \( \dot{\theta} \).}
+    \label{fig:angular_phase_portrait_fieldLines}
+\end{figure}
+
+\subsubsection{Poincaré Map}
+Figure~\ref{fig:poincare_map_fieldLines} presents the Poincaré map, highlighting the periodicity and chaotic transitions introduced by the magnetic field. Sampling is performed at intervals corresponding to the magnetic field period:
+\[
+T = \frac{2\pi}{\omega}.
+\]
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{poincare_map_fieldLines.png}
+    \caption{Poincaré map showing angular displacement \( \theta \) and angular velocity \( \dot{\theta} \) sampled at intervals of the magnetic field period \( T = \frac{2\pi}{\omega} \).}
+    \label{fig:poincare_map_fieldLines}
+\end{figure}
+
+\subsection{Discussion of Results}
+The addition of magnetic field lines provides a richer understanding of the interaction between the dipole field and the spring pendulum system. Key observations include:
+\begin{itemize}
+    \item The radial and angular phase portraits reveal strong nonlinear coupling due to the magnetic field.
+    \item The Poincaré map highlights the transition from periodic to chaotic behavior under varying magnetic parameters.
+    \item The dynamic overlay of the pendulum motion on the field lines visually demonstrates the impact of the field on the pendulum's trajectory.
+\end{itemize}
+
 
 \newpage
 

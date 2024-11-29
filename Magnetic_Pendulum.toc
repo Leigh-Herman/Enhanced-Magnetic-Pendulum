@@ -1,41 +1,54 @@
-\contentsline {section}{\numberline {1}System Description}{2}{section.1}%
+\contentsline {section}{\numberline {1}System Description}{3}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Generalized Coordinates}{3}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Kinetic Energy}{3}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Potential Energy}{3}{subsection.1.3}%
-\contentsline {subsection}{\numberline {1.4}Lagrangian}{3}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.3}Potential Energy}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Lagrangian}{4}{subsection.1.4}%
 \contentsline {section}{\numberline {2}Equations of Motion}{4}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Radial Motion (\( r \))}{4}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Angular Motion (\( \theta \))}{4}{subsection.2.2}%
-\contentsline {section}{\numberline {3}Numerical Methodology for the Spring Pendulum with Magnetic Interaction}{4}{section.3}%
-\contentsline {section}{\numberline {4}Numerical Schemes Considered}{4}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Euler Method}{4}{subsection.4.1}%
+\contentsline {section}{\numberline {3}Numerical Methodology for the Spring Pendulum with Magnetic Interaction}{5}{section.3}%
+\contentsline {section}{\numberline {4}Numerical Schemes Considered}{5}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Euler Method}{5}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Verlet Integration}{5}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Runge-Kutta Methods (RK4 and RK45)}{5}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Implicit Backward Euler Method}{5}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}Crank-Nicolson Method}{5}{subsection.4.5}%
-\contentsline {subsection}{\numberline {4.6}Leapfrog Method}{5}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.4}Implicit Backward Euler Method}{6}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Crank-Nicolson Method}{6}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Leapfrog Method}{6}{subsection.4.6}%
 \contentsline {subsection}{\numberline {4.7}Symplectic Integrators}{6}{subsection.4.7}%
 \contentsline {subsection}{\numberline {4.8}Exponential Integrators}{6}{subsection.4.8}%
 \contentsline {subsection}{\numberline {4.9} Multiscale Methods}{6}{subsection.4.9}%
-\contentsline {subsection}{\numberline {4.10}Geometric Integrators}{6}{subsection.4.10}%
-\contentsline {subsection}{\numberline {4.11}Methodology Selection}{6}{subsection.4.11}%
+\contentsline {subsection}{\numberline {4.10}Geometric Integrators}{7}{subsection.4.10}%
+\contentsline {subsection}{\numberline {4.11}Methodology Selection}{7}{subsection.4.11}%
 \contentsline {section}{\numberline {5}Numerical Results and Visualizations}{7}{section.5}%
 \contentsline {subsection}{\numberline {5.1}Animation of the System Dynamics}{7}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Radial Phase Portrait}{7}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.2}Radial Phase Portrait}{8}{subsection.5.2}%
 \contentsline {subsection}{\numberline {5.3}Angular Phase Portrait}{8}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Poincaré Map}{8}{subsection.5.4}%
-\contentsline {subsection}{\numberline {5.5}Discussion of Results}{8}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.4}Poincaré Map}{9}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}Discussion of Results}{9}{subsection.5.5}%
 \contentsline {section}{\numberline {6}Magnetic Interaction Modeling}{10}{section.6}%
 \contentsline {subsection}{\numberline {6.1}Enhanced Magnetic Field Model}{10}{subsection.6.1}%
 \contentsline {subsection}{\numberline {6.2}Nonlinear Magnetic Force}{10}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Updated Equations of Motion}{10}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.3}Updated Equations of Motion}{11}{subsection.6.3}%
 \contentsline {subsection}{\numberline {6.4}Numerical Implementation}{11}{subsection.6.4}%
 \contentsline {subsection}{\numberline {6.5}Discussion}{11}{subsection.6.5}%
 \contentsline {section}{\numberline {7}Spring Pendulum with Magnetic Interaction: Numerical Analysis}{11}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Numerical Techniques}{11}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Enhanced Magnetics}{11}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.1}Numerical Techniques}{12}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Enhanced Magnetics}{12}{subsection.7.2}%
 \contentsline {subsubsection}{\numberline {7.2.1}Radial Phase Portrait}{12}{subsubsection.7.2.1}%
-\contentsline {subsubsection}{\numberline {7.2.2}Angular Phase Portrait}{12}{subsubsection.7.2.2}%
-\contentsline {subsubsection}{\numberline {7.2.3}Poincaré Map}{12}{subsubsection.7.2.3}%
-\contentsline {subsubsection}{\numberline {7.2.4}Animation}{12}{subsubsection.7.2.4}%
+\contentsline {subsubsection}{\numberline {7.2.2}Angular Phase Portrait}{13}{subsubsection.7.2.2}%
+\contentsline {subsubsection}{\numberline {7.2.3}Poincaré Map}{13}{subsubsection.7.2.3}%
+\contentsline {subsubsection}{\numberline {7.2.4}Animation}{13}{subsubsection.7.2.4}%
 \contentsline {subsection}{\numberline {7.3}Discussion}{14}{subsection.7.3}%
+\contentsline {section}{\numberline {8}Analysis and Reporting}{14}{section.8}%
+\contentsline {subsection}{\numberline {8.1}Analysis of Results}{14}{subsection.8.1}%
+\contentsline {subsection}{\numberline {8.2}Comparison of Models}{15}{subsection.8.2}%
+\contentsline {subsection}{\numberline {8.3}Key Findings}{15}{subsection.8.3}%
+\contentsline {subsection}{\numberline {8.4}Future Work}{15}{subsection.8.4}%
+\contentsline {section}{\numberline {9}Magnetic Field Lines and Dynamics}{15}{section.9}%
+\contentsline {subsection}{\numberline {9.1}Magnetic Field Model}{16}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}Visualization of Field Lines}{16}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}Phase Portraits and Poincaré Map with Field Lines}{16}{subsection.9.3}%
+\contentsline {subsubsection}{\numberline {9.3.1}Radial Phase Portrait}{16}{subsubsection.9.3.1}%
+\contentsline {subsubsection}{\numberline {9.3.2}Angular Phase Portrait}{16}{subsubsection.9.3.2}%
+\contentsline {subsubsection}{\numberline {9.3.3}Poincaré Map}{16}{subsubsection.9.3.3}%
+\contentsline {subsection}{\numberline {9.4}Discussion of Results}{18}{subsection.9.4}%
