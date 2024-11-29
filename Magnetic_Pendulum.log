@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2024.11.7)  29 NOV 2024 12:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10.12) (preloaded format=pdflatex 2024.11.7)  29 NOV 2024 12:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -747,12 +747,8 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write5
 \openout5 = `Magnetic_Pendulum.toc'.
 
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[2{C:/Users/herma/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-sup
-er-ts1.enc}]
+ [2{C:/Users/herma/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-su
+per-ts1.enc}]
 Overfull \hbox (8.18428pt too wide) in paragraph at lines 94--96
 []\OT1/cmr/bx/n/12 Magnetic In-ter-ac-tion: \OT1/cmr/m/n/12 As-sum-ing the mag-
 netic field os-cil-lates as $\OML/cmm/m/it/12 B\OT1/cmr/m/n/12 (\OML/cmm/m/it/1
@@ -836,7 +832,7 @@ LaTeX Warning: Citation `landau2015survey' on page 6 undefined on input line 21
 2.
 
 [6]
-<radial_phase_portrait.png, id=261, 578.16pt x 433.62pt>
+<radial_phase_portrait.png, id=256, 578.16pt x 433.62pt>
 File: radial_phase_portrait.png Graphic file (type png)
 <use radial_phase_portrait.png>
 Package pdftex.def Info: radial_phase_portrait.png  used on input line 256.
@@ -845,7 +841,7 @@ Package pdftex.def Info: radial_phase_portrait.png  used on input line 256.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<angular_phase_portrait.png, id=264, 578.16pt x 433.62pt>
+<angular_phase_portrait.png, id=259, 578.16pt x 433.62pt>
 File: angular_phase_portrait.png Graphic file (type png)
 <use angular_phase_portrait.png>
 Package pdftex.def Info: angular_phase_portrait.png  used on input line 270.
@@ -854,7 +850,7 @@ Package pdftex.def Info: angular_phase_portrait.png  used on input line 270.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<poincare_map.png, id=277, 578.16pt x 433.62pt>
+<poincare_map.png, id=272, 578.16pt x 433.62pt>
 File: poincare_map.png Graphic file (type png)
 <use poincare_map.png>
 Package pdftex.def Info: poincare_map.png  used on input line 284.
@@ -864,13 +860,13 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [8 <./radial_phase_portrait.png>] [9 <./angular_phase_portrait.png> <./poincare
 _map.png>] [10] [11]
-<radial_phase_portrait_magnetic.png, id=301, 578.16pt x 433.62pt>
+<radial_phase_portrait_magnetic.png, id=296, 578.16pt x 433.62pt>
 File: radial_phase_portrait_magnetic.png Graphic file (type png)
 <use radial_phase_portrait_magnetic.png>
 Package pdftex.def Info: radial_phase_portrait_magnetic.png  used on input line
  379.
 (pdftex.def)             Requested size: 362.37569pt x 271.77934pt.
-<angular_phase_portrait_magnetic.png, id=303, 578.16pt x 433.62pt>
+<angular_phase_portrait_magnetic.png, id=298, 578.16pt x 433.62pt>
 File: angular_phase_portrait_magnetic.png Graphic file (type png)
 <use angular_phase_portrait_magnetic.png>
 Package pdftex.def Info: angular_phase_portrait_magnetic.png  used on input lin
@@ -880,7 +876,7 @@ e 389.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<poincare_map_magnetic.png, id=305, 578.16pt x 433.62pt>
+<poincare_map_magnetic.png, id=300, 578.16pt x 433.62pt>
 File: poincare_map_magnetic.png Graphic file (type png)
 <use poincare_map_magnetic.png>
 Package pdftex.def Info: poincare_map_magnetic.png  used on input line 403.
@@ -889,7 +885,19 @@ Package pdftex.def Info: poincare_map_magnetic.png  used on input line 403.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [12 <./radial_phase_portrait_magnetic.png>] [13 <./angular_phase_portrait_magne
-tic.png> <./poincare_map_magnetic.png>] [14] (Magnetic_Pendulum.aux)
+tic.png> <./poincare_map_magnetic.png>] [14]
+Overfull \hbox (40.03203pt too wide) in paragraph at lines 428--429
+\OT1/cmtt/m/n/12 Magnetism / Essential _ Graduate _ Physics _ -[] _ Classical _
+ Electrodynamics _ (Likharev )
+ []
+
+
+Overfull \hbox (45.70703pt too wide) in paragraph at lines 429--430
+[]$\OT1/cmtt/m/n/12 https : / / physicspages . com / pdf / Electrodynamics / Fi
+elds % 20of % 20an % 20oscillating %
+ []
+
+[15] (Magnetic_Pendulum.aux)
  ***********
 LaTeX2e <2023-11-01>
 L3 programming layer <2023-11-01>
@@ -898,18 +906,15 @@ L3 programming layer <2023-11-01>
 
 LaTeX Warning: There were undefined references.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package rerunfilecheck Info: File `Magnetic_Pendulum.out' has not changed.
-(rerunfilecheck)             Checksum: DA764B84076F4DF6484CCCC2F90C5565;7245.
+(rerunfilecheck)             Checksum: AE46ABF6FF47E815B82F6F486A4AEC64;7231.
  ) 
 Here is how much of TeX's memory you used:
- 21365 strings out of 474592
- 405671 string characters out of 5745799
+ 21382 strings out of 474592
+ 405859 string characters out of 5745799
  1941533 words of memory out of 5000000
  43123 multiletter control sequences out of 15000+600000
- 569507 words of font info for 80 fonts, out of 8000000 for 9000
+ 569854 words of font info for 81 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,8n,107p,795b,770s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/herma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
@@ -925,11 +930,12 @@ ppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users
 :/Users/herma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy
 10.pfb><C:/Users/herma/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfont
 s/cm/cmsy8.pfb><C:/Users/herma/AppData/Local/Programs/MiKTeX/fonts/type1/public
-/amsfonts/cm/cmtt12.pfb><C:/Users/herma/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/public/cm-super/sfrm1200.pfb>
-Output written on Magnetic_Pendulum.pdf (14 pages, 597217 bytes).
+/amsfonts/cm/cmti12.pfb><C:/Users/herma/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/public/amsfonts/cm/cmtt12.pfb><C:/Users/herma/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on Magnetic_Pendulum.pdf (15 pages, 628193 bytes).
 PDF statistics:
- 399 PDF objects out of 1000 (max. 8388607)
- 74 named destinations out of 1000 (max. 500000)
- 379 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 436 PDF objects out of 1000 (max. 8388607)
+ 90 named destinations out of 1000 (max. 500000)
+ 371 words of extra memory for PDF output out of 10000 (max. 10000000)
 

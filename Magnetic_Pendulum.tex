@@ -358,10 +358,10 @@ The refined magnetic interaction modeling provides a more realistic representati
 \section{Spring Pendulum with Magnetic Interaction: Numerical Analysis}
 This document outlines the numerical simulation of a spring pendulum system with enhanced magnetic interaction. The system's dynamics are analyzed using numerical methods, phase portraits, Poincaré maps, and animations.
 
-\section{Numerical Techniques}
+\subsection{Numerical Techniques}
 The equations of motion for the spring pendulum system are solved using the RK45 method, which adapts the time step to balance accuracy and efficiency. The Python implementation includes enhancements for capturing nonlinear effects, especially in the presence of an oscillating magnetic field.
 
-\section{Enhanced Magnetics}
+\subsection{Enhanced Magnetics}
 The magnetic field model was extended to include dynamic behavior based on saturation effects. The interaction between the magnetic field and the ferromagnetic mass was modeled as:
 \[
 \mathbf{F}_m = \nabla (\mu \cdot \mathbf{B}),
@@ -371,7 +371,7 @@ where \( \mu \) is the magnetic moment, which varies dynamically according to:
 \mu(B) = \frac{\mu_{\text{max}} B}{B + B_s}.
 \]
 
-\subsection{Radial Phase Portrait}
+\subsubsection{Radial Phase Portrait}
 The radial phase portrait, shown in Figure~\ref{fig:radial_phase_portrait_magnetic}, plots the spring length \( r \) versus its radial velocity \( \dot{r} \). It illustrates the periodic oscillations in the radial direction, highlighting nonlinear coupling introduced by the magnetic interaction.
 
 \begin{figure}[h!]
@@ -381,7 +381,7 @@ The radial phase portrait, shown in Figure~\ref{fig:radial_phase_portrait_magnet
     \label{fig:radial_phase_portrait_magnetic}
 \end{figure}
 
-\subsection{Angular Phase Portrait}
+\subsubsection{Angular Phase Portrait}
 The angular phase portrait, shown in Figure~\ref{fig:angular_phase_portrait_magnetic}, plots the angular displacement \( \theta \) versus its angular velocity \( \dot{\theta} \). It reveals the impact of the oscillating magnetic field on the angular motion.
 
 \begin{figure}[h!]
@@ -391,7 +391,7 @@ The angular phase portrait, shown in Figure~\ref{fig:angular_phase_portrait_magn
     \label{fig:angular_phase_portrait_magnetic}
 \end{figure}
 
-\subsection{Poincaré Map}
+\subsubsection{Poincaré Map}
 The Poincaré map, shown in Figure~\ref{fig:poincare_map_magnetic}, samples the angular displacement \( \theta \) and angular velocity \( \dot{\theta} \) at intervals corresponding to the period of the magnetic field:
 \[
 T = \frac{2\pi}{\omega}.
@@ -405,7 +405,7 @@ The map captures periodicity and chaotic behavior in the system's dynamics.
     \label{fig:poincare_map_magnetic}
 \end{figure}
 
-\subsection{Animation}
+\subsubsection{Animation}
 An animation of the system's motion was created to visualize the dynamic behavior. The animation illustrates:
 \begin{itemize}
     \item Coupled radial and angular motion.
@@ -414,14 +414,10 @@ An animation of the system's motion was created to visualize the dynamic behavio
 \end{itemize}
 The animation is saved as a GIF file, named \texttt{spring\_pendulum\_magnetic.gif}.
 
-\section{Discussion}
+\subsection{Discussion}
 The enhanced magnetic interaction introduces complex nonlinear effects into the system, resulting in more intricate dynamics. Visualizations, including phase portraits and Poincaré maps, reveal the interplay between periodic forcing and nonlinear coupling. The numerical simulation demonstrates the system's sensitivity to parameter changes, offering insights into chaotic and quasi-periodic behavior.
 
-\section{Conclusion}
 The refined magnetic model adds depth to the analysis of the spring pendulum system, capturing nonlinear effects and enhancing the realism of the simulation. Future work can explore the system's behavior under varying damping and additional external forces.
-
-\end{document}
-
 
 \newpage
 
