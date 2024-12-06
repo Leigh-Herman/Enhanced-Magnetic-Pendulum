@@ -5,6 +5,7 @@
 \usepackage{geometry}
 \usepackage{hyperref}
 \geometry{a4paper, margin=1in}
+\usepackage{subcaption}
 
 \title{Lagrangian Formulation of a Spring Pendulum with Oscillating Magnetic Interaction}
 \author{}
@@ -38,28 +39,28 @@ We consider a spring pendulum system where:
     \draw[thick, decorate, decoration={coil, aspect=0.8, segment length=5pt, amplitude=5pt}] (0,0) -- (-1.5,-3);
     
     % Mass
-    \filldraw[fill=gray!50] (-1.5,-3) circle (0.2) node[below] {\( m \)};
+    \filldraw[fill=gray!50] (-1.55,-3.15) circle (0.2);
     
     % Magnetic Field Oscillation
-    \node[right] at (-1.3,-3.5) {\(\mu\)};
+    %\node[right] at (-1.3,-3.5) {\(\mu\)};
     \draw[<->, thick, red] (-1.5,-3.5) -- (-1.5,-4.5) node[midway, right] {\( B(t) \)};
     
     % Label Angle (theta)
-    \draw[thick, ->] (0,0) arc[start angle=-90, end angle=-120, radius=3cm];
-    \node at (-0.3,-1.5) {\(\theta\)};
+    %\draw[thick, ->] (0,0) arc[start angle=-90, end angle=-120, radius=3cm];
+    %\node at (-0.3,-1.5) {\(\theta\)};
     
     % Label spring length (r)
-    \draw[<->] (0,0.2) -- (-1.5,-3.2);
-    \node[right] at (-0.8,-1.8) {\( r \)};
+    %\draw[<->] (0,0.2) -- (-1.5,-3.2);
+    %\node[right] at (-0.8,-1.8) {\( r \)};
     
     % Coordinate axes
     \draw[->, thick] (0,0) -- (1,0) node[right] {\(x\)};
     \draw[->, thick] (0,0) -- (0,-1) node[below] {\(y\)};
     
     % Damping or magnetic force arrow
-    \draw[->, thick, blue] (-1.5,-3) -- (-2.5,-3.5) node[midway, above left] {\( F_m \)};
+    \draw[->, thick, blue] (-1.75,-3.2) -- (-2.5,-3.7) node[midway, above left] {\( F_m \)};
 \end{tikzpicture}
-\caption{A diagram of the spring pendulum system with a ferromagnetic mass influenced by an oscillating magnetic field. The mass \( m \) is attached to the end of the spring, which extends from the fixed support. The system is free to move in both the radial (\( r \)) and angular (\( \theta \)) directions. The mass has a magnetic moment \( \mu \), which interacts with the oscillating magnetic field \( B(t) \), depicted by a red arrow. The blue arrow represents the magnetic force \( F_m \), which affects the angular motion. The diagram also shows the coordinate system (\( x \), \( y \)) and generalized coordinates \( r \) and \( \theta \).}
+\caption{A diagram of the spring pendulum system with a ferromagnetic mass influenced by an oscillating magnetic field. The mass is attached to the end of the spring, which extends from the fixed support. The mass interacts with the oscillating magnetic field \( B(t) \), depicted by a red arrow. The blue arrow represents the magnetic force \( F_m \), which affects the angular motion. .}
 \label{fig:spring_pendulum}
 \end{figure}
 
@@ -130,10 +131,10 @@ m\ddot{r} - mr\dot{\theta}^2 + k(r - l_0) - mg\cos\theta = 0
 \frac{d}{dt}\left(mr^2\dot{\theta}\right) + mgr\sin\theta - \mu B_0\cos(\omega t)\sin\theta = 0
 \]
 \\\\
-\section{Numerical Methodology for the Spring Pendulum with Magnetic Interaction}
-This section provides an overview of numerical methods for solving the coupled differential equations derived from the Lagrangian formulation of the spring pendulum system. The equations of motion for the radial (\( r \)) and angular (\( \theta \)) directions involve time-dependent terms, nonlinear coupling, and periodic forcing due to the oscillating magnetic field. Thus, robust numerical schemes are essential to ensure stability, accuracy, and computational efficiency.
+\section{Numerical Options and Methodology}
+the following section provides an overview of numerical methods for solving the coupled differential equations derived from the Lagrangian formulation. The equations of motion for the radial (\( r \)) and angular (\( \theta \)) directions involve time-dependent terms, nonlinear coupling, and periodic forcing due to the oscillating magnetic field and therefore, robust numerical schemes are essential to ensure stability, accuracy, and computational efficiency. this section concludes with reasoning behind the final numerical choice made for this particular system.
 
-\section{Numerical Schemes Considered}
+\section{Possible Numerical Schemes}
 
 \subsection{Euler Method}
 The Euler method is a straightforward first-order numerical scheme. Given an ordinary differential equation (ODE) of the form:
@@ -144,14 +145,14 @@ the Euler method approximates the solution as:
 \[
 y_{n+1} = y_n + h f(t_n, y_n),
 \]
-where \( h \) is the time step size. While simple to implement, the Euler method is conditionally stable and can accumulate significant numerical error, especially for stiff or oscillatory systems \cite{press2007numerical}.
+where \( h \) is the time step size. While simple to implement, the Euler method is conditionally stable and can accumulate significant numerical error, especially for stiff or oscillatory systems.
 
 \subsection{Verlet Integration}
 Verlet integration is widely used for conservative systems. It approximates the position and velocity using:
 \[
 r_{n+1} = 2r_n - r_{n-1} + h^2 a_n,
 \]
-where \( a_n \) is the acceleration at time step \( n \). This method is second-order accurate, time-reversible, and conserves energy over long simulations. However, it is less efficient when velocity-dependent terms are present \cite{hairer1993solving}.
+where \( a_n \) is the acceleration at time step \( n \). This method is second-order accurate, time-reversible, and conserves energy over long simulations. However, it is less efficient when velocity-dependent terms are present.
 
 \subsection{Runge-Kutta Methods (RK4 and RK45)}
 The fourth-order Runge-Kutta (RK4) method provides a high degree of accuracy. It updates the solution as:
@@ -167,21 +168,21 @@ k_2 = f\left(t_n + \frac{h}{2}, y_n + \frac{h}{2}k_1\right),
 k_3 = f\left(t_n + \frac{h}{2}, y_n + \frac{h}{2}k_2\right), \quad
 k_4 = f(t_n + h, y_n + hk_3).
 \]
-The adaptive version (RK45) dynamically adjusts \( h \) based on error estimates, making it more efficient for varying dynamics \cite{press2007numerical}.
+The adaptive version (RK45) dynamically adjusts \( h \) based on error estimates, making it more efficient for varying dynamics.
 
 \subsection{Implicit Backward Euler Method}
 The backward Euler method is a first-order implicit scheme, given by:
 \[
 y_{n+1} = y_n + h f(t_{n+1}, y_{n+1}).
 \]
-This method is unconditionally stable and effective for stiff systems, but requires iterative solvers to handle the implicit nature \cite{ascher1998computer}.
+This method is unconditionally stable and effective for stiff systems, but requires iterative solvers to handle the implicit nature.
 
 \subsection{Crank-Nicolson Method}
 The Crank-Nicolson method combines forward and backward Euler schemes:
 \[
 y_{n+1} = y_n + \frac{h}{2}\left[f(t_n, y_n) + f(t_{n+1}, y_{n+1})\right].
 \]
-This second-order implicit method is stable and accurate for oscillatory systems \cite{hairer1993solving}.
+This second-order implicit method is stable and accurate for oscillatory systems.
 
 \subsection{Leapfrog Method}
 The leapfrog method updates positions and velocities alternately:
@@ -189,27 +190,27 @@ The leapfrog method updates positions and velocities alternately:
 r_{n+1} = r_n + h v_{n+1/2}, \quad
 v_{n+3/2} = v_{n+1/2} + h a_{n+1}.
 \]
-It is time-reversible, energy-conserving, and suitable for conservative systems, but less effective for systems with strong damping or stiffness \cite{landau2015survey}.
+It is time-reversible, energy-conserving, and suitable for conservative systems, but less effective for systems with strong damping or stiffness.
 
 \subsection{Symplectic Integrators}
 Symplectic integrators, such as the velocity Verlet or implicit midpoint rule, are designed for Hamiltonian systems. For the implicit midpoint rule:
 \[
 y_{n+1} = y_n + h f\left(\frac{t_n + t_{n+1}}{2}, \frac{y_n + y_{n+1}}{2}\right).
 \]
-These methods preserve energy and momentum over long simulations but require implicit solvers \cite{hairer1993solving}.
+These methods preserve energy and momentum over long simulations but require implicit solvers.
 
 \subsection{Exponential Integrators}
 Exponential integrators solve linear components of ODEs analytically using:
 \[
 y_{n+1} = e^{Ah}y_n + \int_0^h e^{A\tau}g(y_n)d\tau,
 \]
-where \( A \) represents the linear operator. These methods are ideal for oscillatory systems or systems with stiffness \cite{ascher1998computer}.
+where \( A \) represents the linear operator. These methods are ideal for oscillatory systems or systems with stiffness.
 
 \subsection{ Multiscale Methods}
-Multiscale methods address systems with multiple timescales by separating fast and slow dynamics. The heterogeneous multiscale method (HMM) is one example, where a reduced model is used for the slow dynamics, while the fast dynamics are simulated only as needed \cite{hairer1993solving}.
+Multiscale methods address systems with multiple timescales by separating fast and slow dynamics. The heterogeneous multiscale method (HMM) is one example, where a reduced model is used for the slow dynamics, while the fast dynamics are simulated only as needed.
 
 \subsection{Geometric Integrators}
-Geometric integrators, such as discrete gradient methods, preserve invariants like energy or angular momentum. These methods are particularly useful for long-term simulations of conservative systems \cite{landau2015survey}.
+Geometric integrators, such as discrete gradient methods, preserve invariants like energy or angular momentum. These methods are particularly useful for long-term simulations of conservative systems.
 
 \subsection{Methodology Selection}
 Considering the nonlinear coupling, oscillatory dynamics, and periodic forcing in the spring pendulum system:
@@ -231,9 +232,11 @@ Based on these considerations:
 
 Thus, the fourth-order Runge-Kutta method (RK4) is selected for its balance between accuracy, stability, and computational efficiency.
 
-\section{Numerical Results and Visualizations}
+\section{Simple Intial Conditions and Magnetic Field: Numerical Results and Visualizations}
 
 The numerical simulation of the spring pendulum system with magnetic interaction was performed using the fourth-order adaptive Runge-Kutta method (RK45). The system's dynamics were visualized using animations, phase portraits, and a Poincaré map, as described below.
+
+This first set of results is created using a simplistic magnetic field, see Python code at \url{https://github.com/Leigh-Herman/Enhanced-Magnetic-Pendulum/blob/main/Magnetic_Pendulum.py}.
 
 \subsection{Animation of the System Dynamics}
 A GIF animation was created to visualize the motion of the spring pendulum over time. The animation captures:
@@ -242,7 +245,7 @@ A GIF animation was created to visualize the motion of the spring pendulum over 
     \item The periodic forcing due to the oscillating magnetic field.
     \item Real-time display of the system's configuration, including the spring and pendulum motion.
 \end{itemize}
-The animation provides an intuitive understanding of the coupled dynamics of the system, highlighting the influence of the magnetic field and nonlinear coupling. The GIF file is named \texttt{spring\_pendulum.gif}.
+The animation provides an intuitive understanding of the coupled dynamics of the system, highlighting the influence of the magnetic field and nonlinear coupling. The GIF file is named \texttt{spring\_pendulum.gif} which can be found in my GitHub \url{https://github.com/Leigh-Herman/Enhanced-Magnetic-Pendulum/blob/main/spring_pendulum.gif}.
 
 \subsection{Radial Phase Portrait}
 The radial phase portrait, shown in Figure~\ref{fig:radial_phase_portrait}, plots the spring length (\( r \)) versus its radial velocity (\( \dot{r} \)):
@@ -297,7 +300,7 @@ These visualizations collectively provide a comprehensive understanding of the s
 
 \section{Magnetic Interaction Modeling}
 
-This section focuses on refining the magnetic field model and incorporating enhanced magnetic forces into the spring pendulum system. These refinements allow for a more accurate representation of the ferromagnetic interaction and its impact on system dynamics.
+The next obvious choice for this system is to enhance the magnetic field. Ideally, this system will exhibit some chaotic behaviour so additional changes to the magnetic field are to be investigated and discussed as more realistic.
 
 \subsection{Enhanced Magnetic Field Model}
 The magnetic field is extended to include spatial and temporal variations:
@@ -328,7 +331,7 @@ Nonlinear effects such as magnetic hysteresis and saturation can be included:
 \end{itemize}
 
 \subsection{Updated Equations of Motion}
-The equations of motion are modified to include the enhanced magnetic force terms:
+Using a saturation of the magnetic field, the equations of motion are modified to include the enhanced magnetic force terms:
 \[
 \ddot{r} = r \dot{\theta}^2 - \frac{k}{m}(r - l_0) + g \cos\theta + \frac{\mu}{m} \frac{\partial B}{\partial r},
 \]
@@ -343,66 +346,32 @@ The numerical solver is updated to include:
     \item Inclusion of nonlinear magnetic forces \( \mathbf{F}_m \) in the equations of motion.
 \end{itemize}
 
-\subsection*{5. Analysis and Visualization}
+The updated code can be found in the GitHub, \url{https://github.com/Leigh-Herman/Enhanced-Magnetic-Pendulum/blob/main/Enhanced_Magnetic_Interaction.py}.
+
+\subsection{Analysis and Visualization}
 To assess the impact of the refined magnetic modeling, the following visualizations are generated:
-\begin{itemize}
-    \item \textbf{Phase Portraits:} Compare the radial and angular phase space trajectories.
-    \item \textbf{Poincaré Maps:} Highlight differences in periodicity and stability.
-    \item \textbf{Time-Series Plots:} Illustrate changes in the radial and angular motion over time.
-\end{itemize}
-
-\subsection{Discussion}
-The refined magnetic interaction modeling provides a more realistic representation of the ferromagnetic system. The added complexity introduces new dynamics, including stronger nonlinear coupling and potential chaotic behavior.
-
-
-\section{Spring Pendulum with Magnetic Interaction: Numerical Analysis}
-This document outlines the numerical simulation of a spring pendulum system with enhanced magnetic interaction. The system's dynamics are analyzed using numerical methods, phase portraits, Poincaré maps, and animations.
-
-\subsection{Numerical Techniques}
-The equations of motion for the spring pendulum system are solved using the RK45 method, which adapts the time step to balance accuracy and efficiency. The Python implementation includes enhancements for capturing nonlinear effects, especially in the presence of an oscillating magnetic field.
-
-\subsection{Enhanced Magnetics}
-The magnetic field model was extended to include dynamic behavior based on saturation effects. The interaction between the magnetic field and the ferromagnetic mass was modeled as:
-\[
-\mathbf{F}_m = \nabla (\mu \cdot \mathbf{B}),
-\]
-where \( \mu \) is the magnetic moment, which varies dynamically according to:
-\[
-\mu(B) = \frac{\mu_{\text{max}} B}{B + B_s}.
-\]
-
-\subsubsection{Radial Phase Portrait}
-The radial phase portrait, shown in Figure~\ref{fig:radial_phase_portrait_magnetic}, plots the spring length \( r \) versus its radial velocity \( \dot{r} \). It illustrates the periodic oscillations in the radial direction, highlighting nonlinear coupling introduced by the magnetic interaction.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.8\textwidth]{radial_phase_portrait_magnetic.png}
-    \caption{Radial phase portrait: \( r \) vs. \( \dot{r} \). The plot shows the effect of the enhanced magnetic interaction on the radial motion.}
-    \label{fig:radial_phase_portrait_magnetic}
-\end{figure}
-
-\subsubsection{Angular Phase Portrait}
-The angular phase portrait, shown in Figure~\ref{fig:angular_phase_portrait_magnetic}, plots the angular displacement \( \theta \) versus its angular velocity \( \dot{\theta} \). It reveals the impact of the oscillating magnetic field on the angular motion.
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.8\textwidth]{angular_phase_portrait_magnetic.png}
-    \caption{Angular phase portrait: \( \theta \) vs. \( \dot{\theta} \). Nonlinear effects from the magnetic forcing are evident.}
-    \label{fig:angular_phase_portrait_magnetic}
-\end{figure}
-
-\subsubsection{Poincaré Map}
-The Poincaré map, shown in Figure~\ref{fig:poincare_map_magnetic}, samples the angular displacement \( \theta \) and angular velocity \( \dot{\theta} \) at intervals corresponding to the period of the magnetic field:
-\[
-T = \frac{2\pi}{\omega}.
-\]
-The map captures periodicity and chaotic behavior in the system's dynamics.
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.8\textwidth]{poincare_map_magnetic.png}
-    \caption{Poincaré map: \( \theta \) vs. \( \dot{\theta} \) sampled at the period of the magnetic field.}
-    \label{fig:poincare_map_magnetic}
+    \begin{subfigure}{0.28\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{radial_phase_portrait_magnetic.png}
+        \label{fig:radial_phase_portrait}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.28\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{angular_phase_portrait_magnetic.png}
+        \label{fig:angular_phase_portrait}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.28\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{poincare_map_magnetic.png}
+        \label{fig:poincare_map}
+    \end{subfigure}
+    \caption{Visualizations of the system dynamics: radial phase portrait, angular phase portrait, and Poincaré map. Each subplot includes the effects of magnetic interaction.}
+    \label{fig:system_dynamics_visualizations}
 \end{figure}
 
 \subsubsection{Animation}
@@ -415,13 +384,11 @@ An animation of the system's motion was created to visualize the dynamic behavio
 The animation is saved as a GIF file, named \texttt{spring\_pendulum\_magnetic.gif}.
 
 \subsection{Discussion}
-The enhanced magnetic interaction introduces complex nonlinear effects into the system, resulting in more intricate dynamics. Visualizations, including phase portraits and Poincaré maps, reveal the interplay between periodic forcing and nonlinear coupling. The numerical simulation demonstrates the system's sensitivity to parameter changes, offering insights into chaotic and quasi-periodic behavior.
+It is surprising that the system has yet to produce more intricate non-linear dynamics but there is some exhibited in the large and small loops. It seems as though more parameters need to be adjusted to force more chaotic dynamics. The small and large twists happen with with regularity and at roughly the same position with a slight precession. The angular phase portrait has what looks to be a stable invariant manifold as expected.   
 
-The refined magnetic model adds depth to the analysis of the spring pendulum system, capturing nonlinear effects and enhancing the realism of the simulation. Future work can explore the system's behavior under varying damping and additional external forces.
+\subsection{Analysis and Reporting}
 
-\section{Analysis and Reporting}
-
-\subsection{Analysis of Results}
+\subsubsection{Summary of Analysis of Results}
 The numerical simulations reveal the complex interplay between the spring pendulum's motion and the external magnetic forcing. Key observations include:
 \begin{itemize}
     \item \textbf{Periodic and Quasi-Periodic Motion:} For small forcing amplitudes (\( B_0 \)) and off-resonance driving frequencies (\( \omega \)), the system exhibits periodic or quasi-periodic behavior, as seen in the phase portraits.
@@ -429,28 +396,20 @@ The numerical simulations reveal the complex interplay between the spring pendul
     \item \textbf{Nonlinear Coupling Effects:} The enhanced magnetic interaction, incorporating saturation and spatial dependence, introduces stronger nonlinear coupling between radial and angular motions.
 \end{itemize}
 
-\subsection{Comparison of Models}
+\subsubsection{Comparison of Models}
 The enhanced magnetic interaction model highlights the following:
 \begin{itemize}
     \item \textbf{Saturation Effects:} The saturation of the magnetic moment (\( \mu \)) results in bounded forcing terms, preventing runaway trajectories.
     \item \textbf{Spatial Variations:} Incorporating spatial gradients of the magnetic field adds complexity to the dynamics, producing more intricate phase portraits and Poincaré maps.
 \end{itemize}
 
-\subsection{Key Findings}
+\subsubsection{Key Findings}
 \begin{enumerate}
     \item The coupling between radial and angular motions is significantly influenced by the strength and frequency of the magnetic field.
     \item Nonlinear magnetic interactions introduce chaotic behavior under certain parameter settings, as seen in the Poincaré maps.
     \item The enhanced magnetic model provides a more realistic representation of ferromagnetic interactions in a dynamic system.
 \end{enumerate}
 
-\subsection{Future Work}
-This project can be extended in several directions:
-\begin{itemize}
-    \item \textbf{Damping Effects:} Introduce damping terms to study energy dissipation and its impact on chaos.
-    \item \textbf{Higher-Dimensional Systems:} Explore multi-pendulum systems or systems with additional degrees of freedom.
-    \item \textbf{Experimental Validation:} Design an experiment to replicate the simulated dynamics and validate the theoretical model.
-    \item \textbf{Lyapunov Analysis:} Compute Lyapunov exponents to quantify chaos in the system.
-\end{itemize}
 
 \section{Magnetic Field Lines and Dynamics}
 
@@ -479,50 +438,35 @@ Figure~\ref{fig:magnetic_field_lines_dynamics} shows the magnetic field lines ge
 \subsection{Phase Portraits and Poincaré Map with Field Lines}
 The magnetic field influences the pendulum's dynamics, as reflected in the phase portraits and Poincaré map.
 
-\subsubsection{Radial Phase Portrait}
-Figure~\ref{fig:radial_phase_portrait_fieldLines} shows the radial phase portrait (\( r \) vs. \( \dot{r} \)) under the influence of the magnetic field. The nonlinear coupling introduced by the field alters the trajectories.
-
 \begin{figure}[h!]
     \centering
-    \includegraphics[width=0.8\textwidth]{radial_phase_portrait_fieldLines.png}
-    \caption{Radial phase portrait showing the relationship between spring length \( r \) and radial velocity \( \dot{r} \) under magnetic field interaction.}
-    \label{fig:radial_phase_portrait_fieldLines}
-\end{figure}
-
-\subsubsection{Angular Phase Portrait}
-Figure~\ref{fig:angular_phase_portrait_fieldLines} shows the angular phase portrait (\( \theta \) vs. \( \dot{\theta} \)), illustrating the periodic and quasi-periodic motion resulting from the magnetic field's influence.
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.8\textwidth]{angular_phase_portrait_fieldLines.png}
-    \caption{Angular phase portrait showing the relationship between angular displacement \( \theta \) and angular velocity \( \dot{\theta} \).}
-    \label{fig:angular_phase_portrait_fieldLines}
-\end{figure}
-
-\subsubsection{Poincaré Map}
-Figure~\ref{fig:poincare_map_fieldLines} presents the Poincaré map, highlighting the periodicity and chaotic transitions introduced by the magnetic field. Sampling is performed at intervals corresponding to the magnetic field period:
-\[
-T = \frac{2\pi}{\omega}.
-\]
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.8\textwidth]{poincare_map_fieldLines.png}
-    \caption{Poincaré map showing angular displacement \( \theta \) and angular velocity \( \dot{\theta} \) sampled at intervals of the magnetic field period \( T = \frac{2\pi}{\omega} \).}
-    \label{fig:poincare_map_fieldLines}
+    \begin{subfigure}{0.28\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{radial_phase_portrait_fieldLines.png}
+        \label{fig:radial_phase_portrait}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.28\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{angular_phase_portrait_fieldLines.png}
+        \label{fig:angular_phase_portrait}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{0.28\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{poincare_map_fieldLines.png}
+        \label{fig:poincare_map}
+    \end{subfigure}
+    \caption{Visualizations of the system dynamics including magnetic field lines: radial phase portrait, angular phase portrait, and Poincaré map.}
+    \label{fig:system_dynamics_visualizations}
 \end{figure}
 
 \subsection{Discussion of Results}
-The addition of magnetic field lines provides a richer understanding of the interaction between the dipole field and the spring pendulum system. Key observations include:
-\begin{itemize}
-    \item The radial and angular phase portraits reveal strong nonlinear coupling due to the magnetic field.
-    \item The Poincaré map highlights the transition from periodic to chaotic behavior under varying magnetic parameters.
-    \item The dynamic overlay of the pendulum motion on the field lines visually demonstrates the impact of the field on the pendulum's trajectory.
-\end{itemize}
+The addition of magnetic field lines provides a very interesting additional depth of understanding. Seeing more into the interaction between the dipole field and the spring pendulum system. 
 
 \section{Eigenvalue Analysis}
 
-The eigenvalue analysis provides insights into the stability of the spring pendulum system around its equilibrium points. By linearizing the equations of motion and analyzing the eigenvalues of the Jacobian matrix, we can determine the stability properties of the system.
+The following section will find the eigenvalues for the system and provide an analysis. First the Jacobian is calculated, equilibrium points are imputed into the Jacobian and the characteristic polynomial is formed and solved, in this case numerically.
 
 \subsection{Linearization of Equations of Motion}
 The nonlinear equations of motion for the spring pendulum system are:
@@ -602,7 +546,7 @@ The eigenvalue analysis reveals the following:
 
 \section{Power Spectrum Analysis}
 
-The power spectrum analysis reveals the frequency components of the system's motion. By analyzing the spectra of the radial displacement (\( r(t) \)) and angular displacement (\( \theta(t) \)), we identify dominant frequencies and detect chaotic behavior.
+The power spectrum analysis reveals the frequency components of the system's motion. By analyzing the spectra of the radial displacement (\( r(t) \)) and angular displacement (\( \theta(t) \)), we identify dominant frequencies and detect chaotic behaviour using Fourier transforms.
 
 \subsection{Computation of the Power Spectrum}
 The power spectrum is computed as:

@@ -94,21 +94,26 @@ B_magnitude = np.sqrt(Bx**2 + By**2)
 Bx_normalized = Bx / (B_magnitude + 1e-5)
 By_normalized = By / (B_magnitude + 1e-5)
 
-# Phase Portraits
+# Radial Phase Portrait with Magnetic Field Lines
 plt.figure(figsize=(8, 6))
-plt.plot(r_vals, r_dot_vals, label="Radial Phase Portrait")
-plt.xlabel("$r$ (m)")
+plt.streamplot(X, Y, Bx_normalized, By_normalized, color=B_magnitude, linewidth=1, cmap='viridis')
+plt.plot(r_vals * np.sin(theta_vals), r_dot_vals, label="Radial Phase Portrait", color='red', lw=1.5)
+plt.xlabel("$r \sin(\\theta)$ (m)")
 plt.ylabel("$\dot{r}$ (m/s)")
-plt.title("Radial Phase Portrait with Magnetic Interaction")
+plt.title("Radial Phase Portrait with Magnetic Field Lines")
+plt.colorbar(label="Magnetic Field Strength")
 plt.grid()
 plt.legend()
 plt.savefig('radial_phase_portrait_fieldLines.png')
 
+# Angular Phase Portrait with Magnetic Field Lines
 plt.figure(figsize=(8, 6))
-plt.plot(theta_vals, theta_dot_vals, label="Angular Phase Portrait", color='orange')
+plt.streamplot(X, Y, Bx_normalized, By_normalized, color=B_magnitude, linewidth=1, cmap='viridis')
+plt.plot(theta_vals, theta_dot_vals, label="Angular Phase Portrait", color='orange', lw=1.5)
 plt.xlabel(r"$\theta$ (rad)")
 plt.ylabel(r"$\dot{\theta}$ (rad/s)")
-plt.title("Angular Phase Portrait with Magnetic Interaction")
+plt.title("Angular Phase Portrait with Magnetic Field Lines")
+plt.colorbar(label="Magnetic Field Strength")
 plt.grid()
 plt.legend()
 plt.savefig('angular_phase_portrait_fieldLines.png')
@@ -118,12 +123,16 @@ period = 2 * np.pi / omega
 poincare_times = np.arange(t_start, t_end, period)
 poincare_indices = [np.abs(t_eval - t).argmin() for t in poincare_times]
 
+# Poincaré Map with Magnetic Field Lines and Improved Visibility
 plt.figure(figsize=(8, 6))
-plt.scatter(theta_vals[poincare_indices], theta_dot_vals[poincare_indices], color='purple')
+plt.streamplot(X, Y, Bx_normalized, By_normalized, color=B_magnitude, linewidth=1, cmap='viridis')
+plt.scatter(theta_vals[poincare_indices], theta_dot_vals[poincare_indices], color='red', label="Poincaré Points", s=30, edgecolor='black', zorder=5)
 plt.xlabel(r"$\theta$ (rad)")
 plt.ylabel(r"$\dot{\theta}$ (rad/s)")
-plt.title("Poincaré Map with Magnetic Interaction")
+plt.title("Poincaré Map with Magnetic Field Lines")
+plt.colorbar(label="Magnetic Field Strength")
 plt.grid()
+plt.legend()
 plt.savefig('poincare_map_fieldLines.png')
 
 # Field lines with dynamics
@@ -151,4 +160,3 @@ def update(frame):
 
 ani = FuncAnimation(fig, update, frames=len(t_eval), init_func=init, blit=True)
 ani.save('magnetic_field_dynamics_fieldLines.gif', writer=PillowWriter(fps=30))
-plt.show()
